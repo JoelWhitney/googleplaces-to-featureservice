@@ -35,16 +35,77 @@ __author__='joelwhitney'
 
   Usage:
 """
-from libraries.GooglePlacesAPI import Google_Places_API
+from libraries.GooglePlaces.GooglePlacesAPI import GooglePlaces
+from libraries.GooglePlaces import types, lang
+from libraries.ArcRESTAPI.ArcRESTAPI import AGOLHandler
+import argparse
+
+def agolHelper_playground():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-portal', dest='sourcePortal', help="url of the source Portal", default="https://nitro.maps.arcgis.com")
+    parser.add_argument('-user', dest='username', help='Portal username', default="joel_Nitro")
+    parser.add_argument('-password', dest='password', help='Portal password', default="joel.nitro")
+    args = parser.parse_args()
+    # Get handler for source Portal for ArcGIS.
+    agol_handler = AGOLHandler(args)
+    search_content = agol_handler.search()
+    print(search_content)
+    for item in search_content['results']:
+        print(item)
+
+    # token = agol_handler.token
+    # print(agol_handler.token)
+    #
+    # # Get a list of the content matching the query.
+    # content = getUserContent(portalUrl=sourcePortal, username=user, token=token)
+    #
+    # resultsCount = len(content)
+    # if resultsCount != 0:
+    #     count = 1
+    #     # Copy the content into the destination user's account.
+    #     for item in content:
+    #         print(item)
+    #         # description = getItemDescription(item['id'], sourcePortal, token)
+    #         # data = getItemData(item['id'], sourcePortal, sourceToken)
+    #         # print(('*' * 30) + ' ITEM {} '.format(count) + ('*' * 30))
+    #         # print(description)
+    #         count += 1
+    #     print(("*" * 90) + "\nFinished showing {} results..\nQUERY: {}\nPORTAL: {}".format(resultsCount, query,
+    #                                                                                        sourcePortal))
+    # else:
+    #     print(("*" * 90) + "\nQuery returned no results..\nQUERY: {}\nPORTAL: {}".format(query, sourcePortal))
+
+agolHelper_playground()
+
+
+
+
+
+
+
+def nearbySearchExample_forAGOL():
+    """uses the nearbysearch example to create an AGOL compatible json for a feature collection"""
+    YOUR_API_KEY = 'AIzaSyDGFXgvnUHjX3wJkm4mFbwFM_XLj7ENKR8'
+    google_places = GooglePlaces(YOUR_API_KEY)
+
+    # You may prefer to use the text_search API, instead.
+    query_result = google_places.nearby_search(
+            location='43.633354,-70.259941', rankby='distance', types=[types.TYPE_BAR])
+    if query_result.has_attributions:
+        print(query_result.html_attributions)
+    agol_json = query_result.agol_json()
+    print(agol_json.raw_json())
+    agol_json.write_jsonfile()
+
 
 def nearbySearchExample():
+    """generic nearbysearch example"""
     api_key = 'AIzaSyAkL_-vfoqk5tSXdzZMgLjGekpsPtPma58'
     nearbysearch_params = {
         'location': '43.633354,-70.259941',
         'type': 'bar',
         'rankby': 'distance'
     }
-
     GoogleAPIInterface = Google_Places_API(api_key)
     searchResult = GoogleAPIInterface.search_places(nearbysearch_params, searchtype='nearbysearch')
     for place in searchResult.places:
@@ -76,15 +137,14 @@ def nearbySearchExample():
     GoogleAPIInterface.write_json(searchResult.raw_response, filename='../nearbysearch_results')
 
 def radarSearchExample():
+    """generic radarsearch example"""
     api_key = 'AIzaSyAkL_-vfoqk5tSXdzZMgLjGekpsPtPma58'
     nearbysearch_params = {
         'location': '43.633354,-70.259941',
         'type': 'bar',
         'rankby': 'distance'
     }
-
     GoogleAPIInterface = Google_Places_API(api_key)
     jsonResults = GoogleAPIInterface.search_places(nearbysearch_params, searchtype='nearbysearch')
     GoogleAPIInterface.write_json(jsonResults, filename='../nearbysearch_results')
 
-nearbySearchExample()
