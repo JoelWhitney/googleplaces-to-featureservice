@@ -18,22 +18,8 @@ __author__='joelwhitney'
 """
   Requires Python 3+
 
-  This script uses the Google Places API to search for places
-  A search request is made with the following https request
-    +  https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
-    +  Required: key, location, radius, rankby=distance
-    +  Optional: keyword, language, minprice/maxprice, name, opennow, rankby, type, pagetoken
-    +  Example: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=YOUR_API_KEY
-    +  API Key:  AIzaSyAkL_-vfoqk5tSXdzZMgLjGekpsPtPma58
+  This script...
 
-  Required inputs:
-    +  URL to a Feature Service
-    +  Username / password with administrator  rights for the feature service
-  Doc Reference:
-    +  http://resources.arcgis.com/en/help/arcgis-rest-api/index.html#/Update_Features/02r3000000zt000000/
-    +  https://developers.google.com/places/web-service/search
-
-  Usage:
 """
 from libraries.GooglePlaces.GooglePlacesAPI import GooglePlaces
 from libraries.GooglePlaces import types, lang
@@ -42,16 +28,21 @@ import argparse
 
 def agolHelper_playground():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-portal', dest='sourcePortal', help="url of the source Portal", default="https://nitro.maps.arcgis.com")
+    parser.add_argument('-portal', dest='sourcePortal', help="url of the source Portal", default="https://www.arcgis.com")
     parser.add_argument('-user', dest='username', help='Portal username', default="joel_Nitro")
     parser.add_argument('-password', dest='password', help='Portal password', default="joel.nitro")
     args = parser.parse_args()
     # Get handler for source Portal for ArcGIS.
     agol_handler = AGOLHandler(args)
-    search_content = agol_handler.search()
-    print(search_content)
-    for item in search_content['results']:
-        print(item)
+    search_results = agol_handler.search(query='title:json_file type:Feature Service', token=agol_handler.token)
+
+    result = search_results.results[0]
+    delete_features_response = agol_handler.delete_features(service_url=result.url)
+    print(delete_features_response)
+
+    # for item in services['results']:
+    #     print(item)
+    # delete_features = agol_handler.delete_features()
 
     # token = agol_handler.token
     # print(agol_handler.token)

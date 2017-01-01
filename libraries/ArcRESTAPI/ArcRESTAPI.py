@@ -18,7 +18,8 @@ __author__='joelwhitney'
 """
   Requires Python 3+
 
-  This sc...
+  A simple wrapper around the ArcREST API..
+
 """
 import urllib
 import urllib.parse
@@ -41,7 +42,7 @@ class AGOLHandler(object):
         """Generates a token."""
         parameters = urllib.parse.urlencode({'username': self.username,
                                              'password': self.password,
-                                             'client': 'requestip',
+                                             'client': 'referer',
                                              'referer': self.sourcePortal,
                                              'expiration': exp,
                                              'f': 'json'}).encode("utf-8")
@@ -61,27 +62,27 @@ class AGOLHandler(object):
     def search(self, query=None, numResults=100, sortField='numviews',
                sortOrder='desc', start=0, token=None):
         '''Retrieve a single page of search results.'''
-        parameters = urllib.parse.urlencode({'q': query,
-                                             'num': numResults,
-                                             'sortField': sortField,
-                                             'sortOrder': sortOrder,
-                                             'f': 'json',
-                                             'start': start}).encode("utf-8")
+        parameters = {'q': query,
+                      'num': numResults,
+                      'sortField': sortField,
+                      'sortOrder': sortOrder,
+                      'f': 'json',
+                      'start': start}
         if token:
-            # Adding a token provides an authenticated search.
             parameters['token'] = token
+        parameters = urllib.parse.urlencode(parameters).encode("utf-8")
         request = self.sourcePortal + '/sharing/rest/search?'
         json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
-        return json_response
+        return AGOLResults(self, json_response)
 
-    def get_usercontent(self):
+    def get_user_content(self):
         ''''''
         parameters = urllib.parse.urlencode({'token': self.token, 'f': 'json'}).encode("utf-8")
         request = self.sourcePortal + '/sharing/rest/content/users/' + self.username + '?'
         json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
         return json_response
 
-    def get_itemdescription(self, item_id):
+    def get_item_description(self, item_id):
         '''Returns the description for a Portal for ArcGIS item.'''
         parameters = urllib.parse.urlencode({'token': self.token, 'f': 'json'}).encode("utf-8")
         request = self.sourcePortal + '/sharing/rest/content/items/' + item_id + '?'
@@ -95,18 +96,19 @@ class AGOLHandler(object):
         json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
         return json_response
 
-    def delete_features(itemId, portalUrl, token):
+    def delete_features(self, service_url, layer_id=0, where='ObjectId>0'):
         '''Returns the description for a Portal for ArcGIS item.
         http://resources.arcgis.com/en/help/arcgis-rest-api/#/Delete_Features/02r3000000w4000000/'''
-        # DELETE http://services.myserver.com/ERmEceOGq5cHrItq/ArcGIS/rest/services/SanFrancisco/311Incidents/FeatureServer/0/deleteFeatures
+        # DELETE http://services.arcgis.com/N4jtru9dctSQR53c/arcgis/rest/services/json_file/FeatureServer/0/deleteFeatures?f=json&geometryType=esriGeometryPoint&where=ObjectId>0
 
-        parameters = urllib.parse.urlencode({'token': token,
-                                             'f': 'json'})
-        response = urllib.request.urlopen(portalUrl + "/sharing/rest/content/items/" +
-                                          itemId + "/data?" + parameters).read()
-        return response
+        parameters = urllib.parse.urlencode({'where': where,
+                                             'f': 'json',
+                                             'token': self.token}).encode("utf-8")
+        request = service_url + '/{}/deleteFeatures?'.format(str(layer_id))
+        json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
+        return json_response
 
-    def add_features(itemId, portalUrl, token):
+    def add_features(self, portalUrl, token):
         '''Returns the description for a Portal for ArcGIS item.
         http://resources.arcgis.com/en/help/arcgis-rest-api/#/Add_Features/02r30000010m000000/'''
         # DELETE http://services.myserver.com/ERmEceOGq5cHrItq/ArcGIS/rest/services/SanFrancisco/311Incidents/FeatureServer/0/addFeatures
@@ -116,3 +118,51 @@ class AGOLHandler(object):
         response = urllib.request.urlopen(portalUrl + "/sharing/rest/content/items/" +
                                           itemId + "/data?" + parameters).read()
         return response
+
+
+class AGOLResults(object):
+    """
+    Wrapper around the AGOLHandler search function.
+    """
+
+    def __init__(self, search_instance, json_response):
+        self._search_instance = search_instance
+        self._response = json_response
+        self._results = []
+        for json_result in json_response['results']:
+            self._results.append(Result(search_instance, json_result))
+
+    def some_function(self):
+        pass
+
+    @property
+    def raw_response(self):
+        return self._response
+
+    @property
+    def results(self):
+        return self._results
+
+
+class Result(object):
+    """
+    Wrapper around the AGOLResults.
+    """
+
+    def __init__(self, search_instance, json_result):
+        self._search_instance = search_instance
+        self._result = json_result
+        self._id = json_result.get('id', None)
+        self._url = json_result.get('url', None)
+
+    @property
+    def raw_response(self):
+        return self._result
+
+    @property
+    def id(self):
+        return self._id
+
+    @property
+    def url(self):
+        return self._url
