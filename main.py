@@ -27,6 +27,7 @@ from libraries.ArcRESTAPI.ArcRESTAPI import AGOLHandler
 import argparse
 
 def agolHelper_playground():
+    """practice area to test wrapper functions"""
     parser = argparse.ArgumentParser()
     parser.add_argument('-portal', dest='sourcePortal', help="url of the source Portal", default="https://www.arcgis.com")
     parser.add_argument('-user', dest='username', help='Portal username', default="joel_Nitro")
@@ -34,37 +35,27 @@ def agolHelper_playground():
     args = parser.parse_args()
     # Get handler for source Portal for ArcGIS.
     agol_handler = AGOLHandler(args)
-    search_results = agol_handler.search(query='title:json_file type:Feature Service', token=agol_handler.token)
 
-    result = search_results.results[0]
-    delete_features_response = agol_handler.delete_features(service_url=result.url)
-    print(delete_features_response)
 
-    # for item in services['results']:
-    #     print(item)
-    # delete_features = agol_handler.delete_features()
+    """search to get feature service url and delete all features"""
+    # feature_services = agol_handler.search(query='title:json_file type:Feature Service', token=agol_handler.token)
+    # feature_service = feature_services.results[0]
+    # delete_features_response = agol_handler.delete_features(service_url=feature_service.url, where='ObjectId>0')
+    # print(delete_features_response)
 
-    # token = agol_handler.token
-    # print(agol_handler.token)
-    #
-    # # Get a list of the content matching the query.
-    # content = getUserContent(portalUrl=sourcePortal, username=user, token=token)
-    #
-    # resultsCount = len(content)
-    # if resultsCount != 0:
-    #     count = 1
-    #     # Copy the content into the destination user's account.
-    #     for item in content:
-    #         print(item)
-    #         # description = getItemDescription(item['id'], sourcePortal, token)
-    #         # data = getItemData(item['id'], sourcePortal, sourceToken)
-    #         # print(('*' * 30) + ' ITEM {} '.format(count) + ('*' * 30))
-    #         # print(description)
-    #         count += 1
-    #     print(("*" * 90) + "\nFinished showing {} results..\nQUERY: {}\nPORTAL: {}".format(resultsCount, query,
-    #                                                                                        sourcePortal))
-    # else:
-    #     print(("*" * 90) + "\nQuery returned no results..\nQUERY: {}\nPORTAL: {}".format(query, sourcePortal))
+    """search Google Places API and add to feature service"""
+    api_key = 'AIzaSyDGFXgvnUHjX3wJkm4mFbwFM_XLj7ENKR8'
+    google_places_handler = GooglePlaces(api_key)
+    google_places = google_places_handler.nearby_search(location='43.633354,-70.259941', rankby='distance', types=[types.TYPE_BAR])
+    print(google_places.raw_response)
+
+    feature_services = agol_handler.search(query='title:json_file type:Feature Service', token=agol_handler.token)
+    feature_service = feature_services.results[0]
+    print("AGOL: {}".format(google_places.agol_json.raw_agol_json))
+    print("ArcREST: {}".format(google_places.agol_json.raw_arcrest_json))
+    add_features_response = agol_handler.add_features(service_url=feature_service.url, agol_json=google_places.agol_json.raw_arcrest_json)
+    print(add_features_response)
+
 
 agolHelper_playground()
 

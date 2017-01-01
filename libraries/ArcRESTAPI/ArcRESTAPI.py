@@ -19,7 +19,6 @@ __author__='joelwhitney'
   Requires Python 3+
 
   A simple wrapper around the ArcREST API..
-
 """
 import urllib
 import urllib.parse
@@ -38,7 +37,7 @@ class AGOLHandler(object):
         self.sourcePortal = args.sourcePortal
         self.token, self.http, self.expires = self.get_token()
 
-    def get_token(self, exp=60):  # expires in 60minutes
+    def get_token(self, exp=60):  # expires in 60 minutes
         """Generates a token."""
         parameters = urllib.parse.urlencode({'username': self.username,
                                              'password': self.password,
@@ -59,8 +58,7 @@ class AGOLHandler(object):
             print('An unspecified error occurred.')
             print(e)
 
-    def search(self, query=None, numResults=100, sortField='numviews',
-               sortOrder='desc', start=0, token=None):
+    def search(self, query=None, numResults=100, sortField='numviews', sortOrder='desc', start=0, token=None):
         '''Retrieve a single page of search results.'''
         parameters = {'q': query,
                       'num': numResults,
@@ -73,6 +71,16 @@ class AGOLHandler(object):
         parameters = urllib.parse.urlencode(parameters).encode("utf-8")
         request = self.sourcePortal + '/sharing/rest/search?'
         json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
+        # try:
+        #     if 'token' in json_response:
+        #         return AGOLResults(self, json_response)
+        #     elif 'error' in json_response:
+        #         print(json_response['error']['message'])
+        #         for detail in json_response['error']['details']:
+        #             print(detail)
+        # except ValueError as e:
+        #     print('An unspecified error occurred.')
+        #     print(e)
         return AGOLResults(self, json_response)
 
     def get_user_content(self):
@@ -99,25 +107,42 @@ class AGOLHandler(object):
     def delete_features(self, service_url, layer_id=0, where='ObjectId>0'):
         '''Returns the description for a Portal for ArcGIS item.
         http://resources.arcgis.com/en/help/arcgis-rest-api/#/Delete_Features/02r3000000w4000000/'''
-        # DELETE http://services.arcgis.com/N4jtru9dctSQR53c/arcgis/rest/services/json_file/FeatureServer/0/deleteFeatures?f=json&geometryType=esriGeometryPoint&where=ObjectId>0
-
         parameters = urllib.parse.urlencode({'where': where,
                                              'f': 'json',
                                              'token': self.token}).encode("utf-8")
         request = service_url + '/{}/deleteFeatures?'.format(str(layer_id))
-        json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
-        return json_response
+        try:
+            json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
+            if 'deleteResults' in json_response:
+                return json_response
+            elif 'error' in json_response:
+                print(json_response['error']['code'])
+                print(json_response['error']['message'])
+                for detail in json_response['error']['details']:
+                    print(detail)
+        except ValueError as e:
+            print('An unspecified error occurred.')
+            print(e)
 
-    def add_features(self, portalUrl, token):
+    def add_features(self, service_url, agol_json):
         '''Returns the description for a Portal for ArcGIS item.
         http://resources.arcgis.com/en/help/arcgis-rest-api/#/Add_Features/02r30000010m000000/'''
-        # DELETE http://services.myserver.com/ERmEceOGq5cHrItq/ArcGIS/rest/services/SanFrancisco/311Incidents/FeatureServer/0/addFeatures
-
-        parameters = urllib.parse.urlencode({'token': token,
-                                             'f': 'json'})
-        response = urllib.request.urlopen(portalUrl + "/sharing/rest/content/items/" +
-                                          itemId + "/data?" + parameters).read()
-        return response
+        parameters = urllib.parse.urlencode({'features': agol_json,
+                                             'f': 'json',
+                                             'token': self.token}).encode("utf-8")
+        request = service_url + '/{}/addFeatures?'.format(str(agol_json))
+        try:
+            json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
+            if 'deleteResults' in json_response:
+                return json_response
+            elif 'error' in json_response:
+                print(json_response['error']['code'])
+                print(json_response['error']['message'])
+                for detail in json_response['error']['details']:
+                    print(detail)
+        except ValueError as e:
+            print('An unspecified error occurred.')
+            print(e)
 
 
 class AGOLResults(object):
