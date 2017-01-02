@@ -1,0 +1,26 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "properties": {
+            "name": "EPSG:4326"
+        },
+        "type": "name"
+    },
+    "features": [
+        {
+            "properties": {
+                "locationType": null,
+                "horizontalAccuracy": 10.0,
+                "timeStamp": 1483378632189
+            },
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.26033556095348,
+                    43.63327922303568
+                ]
+            }
+        }
+    ]
+}

@@ -1097,61 +1097,69 @@ class Photo(object):
 
 class AGOL_JSON(object):
     """Wrapper around the Google Places results to interact with AGOL wrapper."""
-    def __init__(self, places):
-        self._raw_places = places
+    def __init__(self, places=None, features=None):
+        self._features = features
+        self._places = places
         self._agol_featurecollection = {}
         self.__agol_featurecollection()
         self._arcrest_featurelist = []
         self.__arcrest_featurelist()
 
+    def __place_details(self, place):
+        if self._features:
+            place_details = {'geometry': {'longitude': place['geometry']['longitude'],
+                                          'latitude': place['geometry']['latitude']},
+                             'properties': place['properties']}
+        else:
+            place.get_details()
+            place_details = {'geometry': {'longitude': float(place.geo_location['lng']),
+                                          'latitude': float(place.geo_location['lat'])},
+                             'properties': {"place_id": place.place_id,
+                                            "name": place.name,
+                                            "vicinity": place.vicinity,
+                                            "rating": str(place.rating),
+                                            "open_now": place.open_now}}
+        return place_details
+
     """AGOL JSON functions"""
     def __agol_featurelist(self):
         agol_featurelist = []
-        for place in self._raw_places:
-            agol_place =  self.__agol_place(place)
+        places = self._places if self._places else self._features
+        for place in places:
+            agol_place =  self.__agol_place(self.__place_details(place))
             agol_featurelist.append(agol_place)
         return agol_featurelist
 
     def __agol_place(self, place):
-        place.get_details()
         agol_place = {"type": "Feature",
-                   "geometry": {"type": "Point",
-                                "coordinates": [float(place.geo_location['lng']), float(place.geo_location['lat'])]},
-                   "properties": {
-                       "place_id": place.place_id,
-                       "name": place.name,
-                       "vicinity": place.vicinity,
-                       "rating": str(place.rating),
-                       "open_now": place.open_now
-                   }}
+                      "geometry": {"type": "Point",
+                                   "coordinates": [place['geometry']['longitude'], place['geometry']['latitude']]},
+                      "properties": place['properties']}
         return agol_place
 
     def __agol_featurecollection(self):
         agol_featurelist = self.__agol_featurelist()
         agol_featurecollection = {"type": "FeatureCollection",
-                             "crs": {"type": "name", "properties": {"name": "EPSG:4326"}},
-                             "features": agol_featurelist}
+                                  "crs": {"type": "name",
+                                          "properties": {"name": "EPSG:4326"}},
+                                  "features": agol_featurelist}
         self._agol_featurecollection = agol_featurecollection
 
-    """AGOL JSON functions"""
+    """ArcREST JSON functions"""
     def __arcrest_featurelist(self):
         arcrest_featurelist = []
-        for place in self._raw_places:
-            arcrest_place = self.__arcrest_place(place)
+        places = self._places if self._places else self._features
+        for place in places:
+            arcrest_place = self.__arcrest_place(self.__place_details(place))
             arcrest_featurelist.append(arcrest_place)
         self._arcrest_featurelist = arcrest_featurelist
 
     def __arcrest_place(self, place):
-        place.get_details()
         arcrest_place = {
-                      "geometry": {"x": float(place.geo_location['lng']), "y": float(place.geo_location['lat']), "spatialReference": {'wkid': 4326}},
-                      "attributes": {
-                          "place_id": place.place_id,
-                          "name": place.name,
-                          "vicinity": place.vicinity,
-                          "rating": str(place.rating),
-                          "open_now": place.open_now
-                      }}
+                      "geometry": {"x": place['geometry']['longitude'],
+                                   "y": place['geometry']['latitude'],
+                                   "spatialReference": {'wkid': 4326}},
+                      "attributes": place['properties']}
         return arcrest_place
 
     def write_jsonfile(self, raw_json, filename='./json_file'):
@@ -1160,7 +1168,11 @@ class AGOL_JSON(object):
 
     @property
     def raw_places(self):
-        return self._raw_places
+        return self._places
+
+    @property
+    def raw_features(self):
+        return self._features
 
     @property
     def raw_agol_json(self):
