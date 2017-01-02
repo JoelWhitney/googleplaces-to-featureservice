@@ -1144,7 +1144,7 @@ class AGOL_JSON(object):
     def __arcrest_place(self, place):
         place.get_details()
         arcrest_place = {
-                      "geometry": {"x": float(place.geo_location['lng']), "y": float(place.geo_location['lat']), "spatialReference" : "{'wkid' : 4326}"},
+                      "geometry": {"x": float(place.geo_location['lng']), "y": float(place.geo_location['lat']), "spatialReference": {'wkid': 4326}},
                       "attributes": {
                           "place_id": place.place_id,
                           "name": place.name,
