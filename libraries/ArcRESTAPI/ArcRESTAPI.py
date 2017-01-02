@@ -124,13 +124,14 @@ class AGOLHandler(object):
             print('An unspecified error occurred.')
             print(e)
 
-    def add_features(self, service_url, agol_json):
+    def add_features(self, service_url, agol_json, layer_id=0):
         '''Returns the description for a Portal for ArcGIS item.
         http://resources.arcgis.com/en/help/arcgis-rest-api/#/Add_Features/02r30000010m000000/'''
         parameters = urllib.parse.urlencode({'features': agol_json,
                                              'f': 'json',
                                              'token': self.token}).encode("utf-8")
-        request = service_url + '/{}/addFeatures?'.format(str(agol_json))
+        request = service_url + '/{}/addFeatures?'.format(str(layer_id))
+        print(request)
         try:
             json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
             if 'deleteResults' in json_response:

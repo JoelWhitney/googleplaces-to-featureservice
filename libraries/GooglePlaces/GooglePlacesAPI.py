@@ -899,7 +899,7 @@ class Place(object):
 
     @property
     def typesstring(self):
-        for type in self.types:
+        for type in self._types:
             self._typesstring += str(type) + ', '
         return self._typesstring[:-2]
 
@@ -1107,7 +1107,7 @@ class AGOL_JSON(object):
     """AGOL JSON functions"""
     def __agol_featurelist(self):
         agol_featurelist = []
-        for place in self._places:
+        for place in self._raw_places:
             agol_place =  self.__agol_place(place)
             agol_featurelist.append(agol_place)
         return agol_featurelist
@@ -1122,8 +1122,7 @@ class AGOL_JSON(object):
                        "name": place.name,
                        "vicinity": place.vicinity,
                        "rating": str(place.rating),
-                       "open_now": place.open_now,
-                       "types": place.typesstring
+                       "open_now": place.open_now
                    }}
         return agol_place
 
@@ -1132,12 +1131,12 @@ class AGOL_JSON(object):
         agol_featurecollection = {"type": "FeatureCollection",
                              "crs": {"type": "name", "properties": {"name": "EPSG:4326"}},
                              "features": agol_featurelist}
-        self._featurecollection_json = agol_featurecollection
+        self._agol_featurecollection = agol_featurecollection
 
     """AGOL JSON functions"""
     def __arcrest_featurelist(self):
         arcrest_featurelist = []
-        for place in self._places:
+        for place in self._raw_places:
             arcrest_place = self.__arcrest_place(place)
             arcrest_featurelist.append(arcrest_place)
         self._arcrest_featurelist = arcrest_featurelist
@@ -1145,14 +1144,13 @@ class AGOL_JSON(object):
     def __arcrest_place(self, place):
         place.get_details()
         arcrest_place = {
-                      "geometry": {"x": float(place.geo_location['lng']), "y": float(place.geo_location['lat'])},
+                      "geometry": {"x": float(place.geo_location['lng']), "y": float(place.geo_location['lat']), "spatialReference" : "{'wkid' : 4326}"},
                       "attributes": {
                           "place_id": place.place_id,
                           "name": place.name,
                           "vicinity": place.vicinity,
                           "rating": str(place.rating),
-                          "open_now": place.open_now,
-                          "types": place.typesstring
+                          "open_now": place.open_now
                       }}
         return arcrest_place
 
@@ -1170,4 +1168,4 @@ class AGOL_JSON(object):
 
     @property
     def raw_arcrest_json(self):
-        return self._arcrest_featurecollection
+        return self._arcrest_featurelist

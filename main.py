@@ -38,10 +38,10 @@ def agolHelper_playground():
 
 
     """search to get feature service url and delete all features"""
-    # feature_services = agol_handler.search(query='title:json_file type:Feature Service', token=agol_handler.token)
-    # feature_service = feature_services.results[0]
-    # delete_features_response = agol_handler.delete_features(service_url=feature_service.url, where='ObjectId>0')
-    # print(delete_features_response)
+    feature_services = agol_handler.search(query='title:json_file type:Feature Service', token=agol_handler.token)
+    feature_service = feature_services.results[0]
+    delete_features_response = agol_handler.delete_features(service_url=feature_service.url, where='ObjectId>0')
+    print(delete_features_response)
 
     """search Google Places API and add to feature service"""
     api_key = 'AIzaSyDGFXgvnUHjX3wJkm4mFbwFM_XLj7ENKR8'
@@ -53,6 +53,7 @@ def agolHelper_playground():
     feature_service = feature_services.results[0]
     print("AGOL: {}".format(google_places.agol_json.raw_agol_json))
     print("ArcREST: {}".format(google_places.agol_json.raw_arcrest_json))
+    google_places.agol_json.write_jsonfile(google_places.agol_json.raw_agol_json)
     add_features_response = agol_handler.add_features(service_url=feature_service.url, agol_json=google_places.agol_json.raw_arcrest_json)
     print(add_features_response)
 
