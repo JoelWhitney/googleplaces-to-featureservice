@@ -14,6 +14,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>
 """
+import time
+
 __author__='joelwhitney'
 """
   Requires Python 3+
@@ -29,39 +31,40 @@ from pyicloud import PyiCloudService
 
 def agolHelper_playground():
     """practice area to test wrapper functions"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-portal', dest='sourcePortal', help="url of the source Portal", default="https://www.arcgis.com")
-    parser.add_argument('-user', dest='username', help='Portal username', default="joel_Nitro")
-    parser.add_argument('-password', dest='password', help='Portal password', default="joel.nitro")
-    args = parser.parse_args()
+    while True:
+        parser = argparse.ArgumentParser()
+        parser.add_argument('-portal', dest='sourcePortal', help="url of the source Portal", default="https://www.arcgis.com")
+        parser.add_argument('-user', dest='username', help='Portal username', default="joel_Nitro")
+        parser.add_argument('-password', dest='password', help='Portal password', default="joel.nitro")
+        args = parser.parse_args()
 
-    """get last iPhone location for Google Places search"""
-    api = PyiCloudService('whitney.joel.b@gmail.com', 'Whitneyjb5')
-    iphone6S = api.devices['SOgZzA09evu1n78fvaGBelmik77fmEl2vFGf+aUHaNmvP0GNtbAPT+HYVNSUzmWV']
-    iphone6S_location = '{}, {}'.format(iphone6S.location()['latitude'], iphone6S.location()['longitude'])
-    print(iphone6S_location)
+        """get last iPhone location for Google Places search"""
+        api = PyiCloudService('whitney.joel.b@gmail.com', 'Whitneyjb5')
+        iphone6S = api.devices['SOgZzA09evu1n78fvaGBelmik77fmEl2vFGf+aUHaNmvP0GNtbAPT+HYVNSUzmWV']
+        iphone6S_location = '{}, {}'.format(iphone6S.location()['latitude'], iphone6S.location()['longitude'])
+        print(iphone6S_location)
 
-    """search Google Places API and add to feature service"""
-    api_key = 'AIzaSyDtbpYc0KAQ4-ZMLd6AnTcGfPo2xht8ilQ'
-    google_places_handler = GooglePlaces(api_key)
-    google_places = google_places_handler.nearby_search(location=iphone6S_location, rankby='distance', types=[types.TYPE_BAR])
-    print(google_places.raw_response)
+        """search Google Places API and add to feature service"""
+        api_key = 'AIzaSyDtbpYc0KAQ4-ZMLd6AnTcGfPo2xht8ilQ'
+        google_places_handler = GooglePlaces(api_key)
+        google_places = google_places_handler.nearby_search(location=iphone6S_location, rankby='distance', types=[types.TYPE_BAR])
+        print(google_places.raw_response)
 
-    """delete all features before adding new features to feature service"""
-    # Get handler for source Portal for ArcGIS.
-    agol_handler = AGOLHandler(args)
-    feature_services = agol_handler.search(query='title:json_file type:Feature Service', token=agol_handler.token)
-    feature_service = feature_services.results[0]
-    print("AGOL: {}".format(google_places.agol_json.raw_agol_json))
-    print("ArcREST: {}".format(google_places.agol_json.raw_arcrest_json))
-    google_places.agol_json.write_jsonfile(google_places.agol_json.raw_agol_json)
-    # delete features
-    delete_features_response = agol_handler.delete_features(service_url=feature_service.url, where='ObjectId>0')
-    print(delete_features_response)
-    # add features
-    add_features_response = agol_handler.add_features(service_url=feature_service.url, agol_json=google_places.agol_json.raw_arcrest_json)
-    print(add_features_response)
-
+        """delete all features before adding new features to feature service"""
+        # Get handler for source Portal for ArcGIS.
+        agol_handler = AGOLHandler(args)
+        feature_services = agol_handler.search(query='title:json_file type:Feature Service', token=agol_handler.token)
+        feature_service = feature_services.results[0]
+        print("AGOL: {}".format(google_places.agol_json.raw_agol_json))
+        print("ArcREST: {}".format(google_places.agol_json.raw_arcrest_json))
+        google_places.agol_json.write_jsonfile(google_places.agol_json.raw_agol_json)
+        # delete features
+        delete_features_response = agol_handler.delete_features(service_url=feature_service.url, where='ObjectId>0')
+        print(delete_features_response)
+        # add features
+        add_features_response = agol_handler.add_features(service_url=feature_service.url, agol_json=google_places.agol_json.raw_arcrest_json)
+        print(add_features_response)
+        time.sleep(1800)
 
 agolHelper_playground()
 
