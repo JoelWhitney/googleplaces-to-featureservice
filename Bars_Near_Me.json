@@ -1,20 +1,13 @@
 {
     "type": "FeatureCollection",
     "crs": {
+        "type": "name",
         "properties": {
             "name": "EPSG:4326"
-        },
-        "type": "name"
+        }
     },
     "features": [
         {
-            "properties": {
-                "rating": "4.1",
-                "vicinity": "725 Broadway, South Portland",
-                "open_now": "True",
-                "name": "Easy Day",
-                "place_id": "ChIJ97bx_5qeskwRS6Vsf_f71c0"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -22,16 +15,16 @@
                     -70.2606321,
                     43.6336191
                 ]
+            },
+            "properties": {
+                "rating": "4.1",
+                "name": "Easy Day",
+                "open_now": "True",
+                "place_id": "ChIJ97bx_5qeskwRS6Vsf_f71c0",
+                "vicinity": "725 Broadway, South Portland"
             }
         },
         {
-            "properties": {
-                "rating": "none",
-                "vicinity": "173 Ocean Street, South Portland",
-                "open_now": "none",
-                "name": "R J's Pub",
-                "place_id": "ChIJSYDxAYOeskwRbz2DpEWCmPM"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -39,16 +32,16 @@
                     -70.25269399999999,
                     43.6362925
                 ]
+            },
+            "properties": {
+                "rating": "none",
+                "name": "R J's Pub",
+                "open_now": "none",
+                "place_id": "ChIJSYDxAYOeskwRbz2DpEWCmPM",
+                "vicinity": "173 Ocean Street, South Portland"
             }
         },
         {
-            "properties": {
-                "rating": "none",
-                "vicinity": "60 Ocean Street, South Portland",
-                "open_now": "none",
-                "name": "Griffin Club",
-                "place_id": "ChIJPz9S5CecskwRmprfaRYo3PY"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -56,16 +49,16 @@
                     -70.2536776,
                     43.6399281
                 ]
+            },
+            "properties": {
+                "rating": "none",
+                "name": "Griffin Club",
+                "open_now": "none",
+                "place_id": "ChIJPz9S5CecskwRmprfaRYo3PY",
+                "vicinity": "60 Ocean Street, South Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.5",
-                "vicinity": "15 Ocean Street, South Portland",
-                "open_now": "False",
-                "name": "Foulmouthed Brewing",
-                "place_id": "ChIJi8dPVSacskwRfyzj75h2lTE"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -73,16 +66,16 @@
                     -70.255123,
                     43.6409767
                 ]
+            },
+            "properties": {
+                "rating": "4.5",
+                "name": "Foulmouthed Brewing",
+                "open_now": "False",
+                "place_id": "ChIJi8dPVSacskwRfyzj75h2lTE",
+                "vicinity": "15 Ocean Street, South Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.2",
-                "vicinity": "212 Danforth Street, Portland",
-                "open_now": "True",
-                "name": "Ruski's",
-                "place_id": "ChIJ8wBGqxmcskwRS5NtUoTN_s4"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -90,16 +83,16 @@
                     -70.2642068,
                     43.6480508
                 ]
+            },
+            "properties": {
+                "rating": "4.2",
+                "name": "Ruski's",
+                "open_now": "True",
+                "place_id": "ChIJ8wBGqxmcskwRS5NtUoTN_s4",
+                "vicinity": "212 Danforth Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.1",
-                "vicinity": "388 Cottage Road, South Portland",
-                "open_now": "False",
-                "name": "David's 388 Restaurant",
-                "place_id": "ChIJRcdVHdadskwRO5PuN5joPuc"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -107,50 +100,16 @@
                     -70.2351451,
                     43.6357176
                 ]
-            }
-        },
-        {
+            },
             "properties": {
-                "rating": "4.2",
-                "vicinity": "117 Spring Street, Portland",
+                "rating": "4.1",
+                "name": "David's 388 Restaurant",
                 "open_now": "False",
-                "name": "Flask Lounge",
-                "place_id": "ChIJF2ta6BacskwRCZXubjpzr8I"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.2624051,
-                    43.65301049999999
-                ]
+                "place_id": "ChIJRcdVHdadskwRO5PuN5joPuc",
+                "vicinity": "388 Cottage Road, South Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.3",
-                "vicinity": "51 York Street, Portland",
-                "open_now": "True",
-                "name": "Portland Pie Co. Portland",
-                "place_id": "ChIJ_SpdkhWcskwRTIFdDmikAqc"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.2576059,
-                    43.65300130000001
-                ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "none",
-                "vicinity": "121 Sawyer Street, South Portland",
-                "open_now": "False",
-                "name": "Evelyn's Tavern",
-                "place_id": "ChIJnzCKIDKcskwRfBmKAVooRLo"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -158,16 +117,50 @@
                     -70.24087829999999,
                     43.6473625
                 ]
+            },
+            "properties": {
+                "rating": "none",
+                "name": "Evelyn's Tavern",
+                "open_now": "False",
+                "place_id": "ChIJnzCKIDKcskwRfBmKAVooRLo",
+                "vicinity": "121 Sawyer Street, South Portland"
             }
         },
         {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2576059,
+                    43.65300130000001
+                ]
+            },
             "properties": {
                 "rating": "4.3",
-                "vicinity": "106 High Street, Portland",
+                "name": "Portland Pie Co. Portland",
                 "open_now": "True",
-                "name": "Little Tap House",
-                "place_id": "ChIJBXIVtxacskwRHZ9Py-ZKnxk"
+                "place_id": "ChIJ_SpdkhWcskwRTIFdDmikAqc",
+                "vicinity": "51 York Street, Portland"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2624051,
+                    43.65301049999999
+                ]
             },
+            "properties": {
+                "rating": "4.2",
+                "name": "Flask Lounge",
+                "open_now": "False",
+                "place_id": "ChIJF2ta6BacskwRCZXubjpzr8I",
+                "vicinity": "117 Spring Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -175,16 +168,16 @@
                     -70.262272,
                     43.65308
                 ]
+            },
+            "properties": {
+                "rating": "4.3",
+                "name": "Little Tap House",
+                "open_now": "True",
+                "place_id": "ChIJBXIVtxacskwRHZ9Py-ZKnxk",
+                "vicinity": "106 High Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.3",
-                "vicinity": "6 Pine Street, Portland",
-                "open_now": "False",
-                "name": "Blackstones",
-                "place_id": "ChIJ1XUU-xCcskwRHe6AzV1b304"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -192,16 +185,16 @@
                     -70.2669203,
                     43.6525833
                 ]
-            }
-        },
-        {
+            },
             "properties": {
                 "rating": "4.3",
-                "vicinity": "188 State Street -200, Portland",
-                "open_now": "True",
-                "name": "Pai Men Miyake",
-                "place_id": "ChIJXTtb_BCcskwRa0bCJTxysLQ"
-            },
+                "name": "Blackstones",
+                "open_now": "False",
+                "place_id": "ChIJ1XUU-xCcskwRHe6AzV1b304",
+                "vicinity": "6 Pine Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -209,33 +202,33 @@
                     -70.267106,
                     43.6527931
                 ]
+            },
+            "properties": {
+                "rating": "4.3",
+                "name": "Pai Men Miyake",
+                "open_now": "True",
+                "place_id": "ChIJXTtb_BCcskwRa0bCJTxysLQ",
+                "vicinity": "188 State Street -200, Portland"
             }
         },
         {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.267106,
+                    43.6527931
+                ]
+            },
             "properties": {
                 "rating": "4.2",
-                "vicinity": "188A State Street, Portland",
-                "open_now": "False",
                 "name": "LFK",
-                "place_id": "ChIJS0zv_RCcskwRnUIvyrtXFnA"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.267106,
-                    43.6527931
-                ]
+                "open_now": "False",
+                "place_id": "ChIJS0zv_RCcskwRnUIvyrtXFnA",
+                "vicinity": "188A State Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.4",
-                "vicinity": "650 Congress Street # A, Portland",
-                "open_now": "False",
-                "name": "Blue",
-                "place_id": "ChIJxX5qIhGcskwRi7EUM95vgFI"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -243,16 +236,16 @@
                     -70.2654129,
                     43.6531479
                 ]
+            },
+            "properties": {
+                "rating": "4.4",
+                "name": "Blue",
+                "open_now": "False",
+                "place_id": "ChIJxX5qIhGcskwRi7EUM95vgFI",
+                "vicinity": "650 Congress Street # A, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.8",
-                "vicinity": "644 Congress Street, Portland",
-                "open_now": "False",
-                "name": "The Bearded Lady's Jewel Box",
-                "place_id": "ChIJ03t3IxGcskwRCpXHkzoSex0"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -260,50 +253,16 @@
                     -70.26522059999999,
                     43.65319579999999
                 ]
-            }
-        },
-        {
+            },
             "properties": {
-                "rating": "4.4",
-                "vicinity": "606 Congress Street, Portland",
+                "rating": "4.8",
+                "name": "The Bearded Lady's Jewel Box",
                 "open_now": "False",
-                "name": "Downtown Lounge",
-                "place_id": "ChIJ65jgtBacskwRqmssabfKs8c"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.2634458,
-                    43.6536546
-                ]
+                "place_id": "ChIJ03t3IxGcskwRCpXHkzoSex0",
+                "vicinity": "644 Congress Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.9",
-                "vicinity": "685 Congress Street, Portland",
-                "open_now": "False",
-                "name": "Local 188",
-                "place_id": "ChIJ_UcyqxGcskwREiMA--XXdwo"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.2675636,
-                    43.6531758
-                ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "4.4",
-                "vicinity": "254 Commercial Street, Portland",
-                "open_now": "True",
-                "name": "The King's Head Pub",
-                "place_id": "ChIJoZrJej6cskwRzrktMNPGjPo"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -311,33 +270,50 @@
                     -70.2541967,
                     43.65351879999999
                 ]
+            },
+            "properties": {
+                "rating": "4.4",
+                "name": "The King's Head Pub",
+                "open_now": "True",
+                "place_id": "ChIJoZrJej6cskwRzrktMNPGjPo",
+                "vicinity": "254 Commercial Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.6",
-                "vicinity": "703 Congress Street, Portland",
-                "open_now": "True",
-                "name": "Hot Suppa",
-                "place_id": "ChIJ5fqyTRCcskwRohgCeF8hFHM"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -70.2684045,
-                    43.6531597
+                    -70.2634458,
+                    43.6536546
                 ]
+            },
+            "properties": {
+                "rating": "4.4",
+                "name": "Downtown Lounge",
+                "open_now": "False",
+                "place_id": "ChIJ65jgtBacskwRqmssabfKs8c",
+                "vicinity": "606 Congress Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.1",
-                "vicinity": "617 Congress Street, Portland",
-                "open_now": "True",
-                "name": "Congress Bar & Grill",
-                "place_id": "ChIJ6y2ySRGcskwRpRx0RZCY1K0"
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2675636,
+                    43.6531758
+                ]
             },
+            "properties": {
+                "rating": "3.9",
+                "name": "Local 188",
+                "open_now": "False",
+                "place_id": "ChIJ_UcyqxGcskwREiMA--XXdwo",
+                "vicinity": "685 Congress Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -345,16 +321,33 @@
                     -70.2640686,
                     43.65384529999999
                 ]
+            },
+            "properties": {
+                "rating": "4.1",
+                "name": "Congress Bar & Grill",
+                "open_now": "True",
+                "place_id": "ChIJ6y2ySRGcskwRpRx0RZCY1K0",
+                "vicinity": "617 Congress Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.4",
-                "vicinity": "1 Danforth Street, Portland",
-                "open_now": "True",
-                "name": "Yosaku",
-                "place_id": "ChIJH6qG5RWcskwR2IVb3FIZam8"
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2684045,
+                    43.6531597
+                ]
             },
+            "properties": {
+                "rating": "4.6",
+                "name": "Hot Suppa",
+                "open_now": "True",
+                "place_id": "ChIJ5fqyTRCcskwRohgCeF8hFHM",
+                "vicinity": "703 Congress Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -362,33 +355,16 @@
                     -70.2574187,
                     43.654386
                 ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "4.3",
-                "vicinity": "593 Congress Street, Portland",
-                "open_now": "False",
-                "name": "Vinland",
-                "place_id": "ChIJi4hGrBacskwRUx3TSBqnD1E"
             },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.2629967,
-                    43.6544019
-                ]
-            }
-        },
-        {
             "properties": {
-                "rating": "3.9",
-                "vicinity": "128 Free Street, Portland",
+                "rating": "4.4",
+                "name": "Yosaku",
                 "open_now": "True",
-                "name": "The Dogfish Bar and Grille",
-                "place_id": "ChIJ-7y-HRScskwRwWGNSs85BoU"
-            },
+                "place_id": "ChIJH6qG5RWcskwR2IVb3FIZam8",
+                "vicinity": "1 Danforth Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -396,16 +372,33 @@
                     -70.26167029999999,
                     43.65448740000001
                 ]
+            },
+            "properties": {
+                "rating": "3.9",
+                "name": "The Dogfish Bar and Grille",
+                "open_now": "True",
+                "place_id": "ChIJ-7y-HRScskwRwWGNSs85BoU",
+                "vicinity": "128 Free Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.8",
-                "vicinity": "133 Free Street, Portland",
-                "open_now": "True",
-                "name": "Matthew's",
-                "place_id": "ChIJ4-dCHRScskwRvgMxUAan4pM"
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2629967,
+                    43.6544019
+                ]
             },
+            "properties": {
+                "rating": "4.3",
+                "name": "Vinland",
+                "open_now": "False",
+                "place_id": "ChIJi4hGrBacskwRUx3TSBqnD1E",
+                "vicinity": "593 Congress Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -413,16 +406,16 @@
                     -70.2621071,
                     43.65457209999999
                 ]
+            },
+            "properties": {
+                "rating": "3.8",
+                "name": "Matthew's",
+                "open_now": "True",
+                "place_id": "ChIJ4-dCHRScskwRvgMxUAan4pM",
+                "vicinity": "133 Free Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.5",
-                "vicinity": "576 Congress Street, Portland",
-                "open_now": "True",
-                "name": "OTTO",
-                "place_id": "ChIJDVgmAhScskwRt-jU9f4C05E"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -430,16 +423,16 @@
                     -70.2622068,
                     43.65463919999999
                 ]
+            },
+            "properties": {
+                "rating": "4.5",
+                "name": "OTTO",
+                "open_now": "True",
+                "place_id": "ChIJDVgmAhScskwRt-jU9f4C05E",
+                "vicinity": "576 Congress Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.2",
-                "vicinity": "250 Commercial Street, Portland",
-                "open_now": "True",
-                "name": "Liquid Riot Bottling Company",
-                "place_id": "ChIJk44YQj6cskwRuoLrRx3u5yg"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -447,50 +440,16 @@
                     -70.2542504,
                     43.6544581
                 ]
+            },
+            "properties": {
+                "rating": "4.2",
+                "name": "Liquid Riot Bottling Company",
+                "open_now": "True",
+                "place_id": "ChIJk44YQj6cskwRuoLrRx3u5yg",
+                "vicinity": "250 Commercial Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.3",
-                "vicinity": "157 High Street, Portland",
-                "open_now": "False",
-                "name": "Top of the East",
-                "place_id": "ChIJRcd64hOcskwRH50x5Y5y1Ng"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.263817,
-                    43.6548779
-                ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "none",
-                "vicinity": "157 High Street, Portland",
-                "open_now": "none",
-                "name": "157 Cafe & Bar",
-                "place_id": "ChIJPzONUBGcskwRxKBqWhH5PsY"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.263817,
-                    43.6548779
-                ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "3.8",
-                "vicinity": "505 Fore Street, Portland",
-                "open_now": "False",
-                "name": "Zapoteca Restaurant",
-                "place_id": "ChIJ_SpdkhWcskwRDSxCQagQBII"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -498,16 +457,16 @@
                     -70.2568361,
                     43.65503710000001
                 ]
+            },
+            "properties": {
+                "rating": "3.8",
+                "name": "Zapoteca Restaurant",
+                "open_now": "False",
+                "place_id": "ChIJ_SpdkhWcskwRDSxCQagQBII",
+                "vicinity": "505 Fore Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "none",
-                "vicinity": "245 Commercial Street, Portland",
-                "open_now": "none",
-                "name": "Muse Paintbar - Portland",
-                "place_id": "ChIJ24kLOz6cskwRKp6BF4s9IME"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -515,33 +474,16 @@
                     -70.2547199,
                     43.65485990000001
                 ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "4.7",
-                "vicinity": "769 Congress Street, Portland",
-                "open_now": "False",
-                "name": "Bramhall",
-                "place_id": "ChIJLa78zA-cskwR11780Pzj21w"
             },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.27135500000001,
-                    43.653698
-                ]
-            }
-        },
-        {
             "properties": {
-                "rating": "3.6",
-                "vicinity": "241 Commercial Street, Portland",
+                "rating": "none",
+                "name": "Muse Paintbar - Portland",
                 "open_now": "none",
-                "name": "Three Dollar Deweys",
-                "place_id": "ChIJNe5WNz6cskwRsuJp1uNOmeA"
-            },
+                "place_id": "ChIJ24kLOz6cskwRKp6BF4s9IME",
+                "vicinity": "245 Commercial Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -549,50 +491,50 @@
                     -70.2548073,
                     43.6548811
                 ]
+            },
+            "properties": {
+                "rating": "3.6",
+                "name": "Three Dollar Deweys",
+                "open_now": "none",
+                "place_id": "ChIJNe5WNz6cskwRsuJp1uNOmeA",
+                "vicinity": "241 Commercial Street, Portland"
             }
         },
         {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.263817,
+                    43.6548779
+                ]
+            },
             "properties": {
                 "rating": "4.3",
-                "vicinity": "548 Congress Street, Portland",
-                "open_now": "True",
-                "name": "Taco Escobarr",
-                "place_id": "ChIJoQQyDBScskwRShtKWY0opPU"
-            },
+                "name": "Top of the East",
+                "open_now": "False",
+                "place_id": "ChIJRcd64hOcskwRH50x5Y5y1Ng",
+                "vicinity": "157 High Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -70.2615582,
-                    43.6553
+                    -70.263817,
+                    43.6548779
                 ]
+            },
+            "properties": {
+                "rating": "none",
+                "name": "157 Cafe & Bar",
+                "open_now": "none",
+                "place_id": "ChIJPzONUBGcskwRxKBqWhH5PsY",
+                "vicinity": "157 High Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.1",
-                "vicinity": "10 Cotton Street, Portland",
-                "open_now": "True",
-                "name": "Rivalries Sports Pub and Grill",
-                "place_id": "ChIJD2HQkBWcskwRqmmR96_kgmM"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.256999,
-                    43.6552633
-                ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "3.9",
-                "vicinity": "25 Long Wharf, Portland",
-                "open_now": "True",
-                "name": "DiMillo's On the Water",
-                "place_id": "ChIJqXW8pT-cskwRAZQYJFNZmd0"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -600,16 +542,33 @@
                     -70.2506075,
                     43.65426739999999
                 ]
+            },
+            "properties": {
+                "rating": "3.9",
+                "name": "DiMillo's On the Water",
+                "open_now": "True",
+                "place_id": "ChIJqXW8pT-cskwRAZQYJFNZmd0",
+                "vicinity": "25 Long Wharf, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4",
-                "vicinity": "57 Center Street, Portland",
-                "open_now": "True",
-                "name": "Brian Boru Public House",
-                "place_id": "ChIJ_aU0vBWcskwRgI-O3kEjyFM"
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.256999,
+                    43.6552633
+                ]
             },
+            "properties": {
+                "rating": "4.1",
+                "name": "Rivalries Sports Pub and Grill",
+                "open_now": "True",
+                "place_id": "ChIJD2HQkBWcskwRqmmR96_kgmM",
+                "vicinity": "10 Cotton Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -617,16 +576,50 @@
                     -70.257452,
                     43.655308
                 ]
+            },
+            "properties": {
+                "rating": "4",
+                "name": "Brian Boru Public House",
+                "open_now": "True",
+                "place_id": "ChIJ_aU0vBWcskwRgI-O3kEjyFM",
+                "vicinity": "57 Center Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.4",
-                "vicinity": "551 Congress Street, Portland",
-                "open_now": "True",
-                "name": "Nosh Kitchen Bar",
-                "place_id": "ChIJz6p1DBScskwRwdzgt-vsOWo"
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2615582,
+                    43.6553
+                ]
             },
+            "properties": {
+                "rating": "4.3",
+                "name": "Taco Escobarr",
+                "open_now": "True",
+                "place_id": "ChIJoQQyDBScskwRShtKWY0opPU",
+                "vicinity": "548 Congress Street, Portland"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.27135500000001,
+                    43.653698
+                ]
+            },
+            "properties": {
+                "rating": "4.7",
+                "name": "Bramhall",
+                "open_now": "False",
+                "place_id": "ChIJLa78zA-cskwR11780Pzj21w",
+                "vicinity": "769 Congress Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -634,50 +627,16 @@
                     -70.2618679,
                     43.6554912
                 ]
+            },
+            "properties": {
+                "rating": "4.4",
+                "name": "Nosh Kitchen Bar",
+                "open_now": "True",
+                "place_id": "ChIJz6p1DBScskwRwdzgt-vsOWo",
+                "vicinity": "551 Congress Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.5",
-                "vicinity": "27 Forest Avenue, Portland",
-                "open_now": "none",
-                "name": "Katahdin Restaurant",
-                "place_id": "ChIJGZiA7xOcskwRnqLjPiELL_g"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.2633592,
-                    43.6554707
-                ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "4.8",
-                "vicinity": "547 Congress Street, Portland",
-                "open_now": "False",
-                "name": "Emilitsa",
-                "place_id": "ChIJS0qfDhScskwRJp5Tm_B-a8M"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.26181679999999,
-                    43.6556195
-                ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "none",
-                "vicinity": "468 Fore Street, Portland",
-                "open_now": "False",
-                "name": "Eve’s At The Garden Restaurant",
-                "place_id": "ChIJL5UFkz-cskwRKPoNPCiDYZE"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -685,67 +644,50 @@
                     -70.2550978,
                     43.6554604
                 ]
-            }
-        },
-        {
+            },
             "properties": {
                 "rating": "none",
-                "vicinity": "3 Deering Avenue, Portland",
+                "name": "Eve’s At The Garden Restaurant",
                 "open_now": "False",
-                "name": "Rossobianco",
-                "place_id": "ChIJM_qKTA6cskwRWLxjQjlb3VE"
-            },
+                "place_id": "ChIJL5UFkz-cskwRKPoNPCiDYZE",
+                "vicinity": "468 Fore Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -70.272239,
-                    43.654144
+                    -70.2633592,
+                    43.6554707
                 ]
+            },
+            "properties": {
+                "rating": "3.5",
+                "name": "Katahdin Restaurant",
+                "open_now": "none",
+                "place_id": "ChIJGZiA7xOcskwRnqLjPiELL_g",
+                "vicinity": "27 Forest Avenue, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.1",
-                "vicinity": "77 Free Street, Portland",
-                "open_now": "False",
-                "name": "Binga's Stadium",
-                "place_id": "ChIJ4YhLRBScskwRaA_JR-Yv_NI"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
                 "coordinates": [
-                    -70.2599352,
-                    43.6559137
+                    -70.26181679999999,
+                    43.6556195
                 ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "3.4",
-                "vicinity": "242 Saint John Street, Portland",
-                "open_now": "True",
-                "name": "Margaritas",
-                "place_id": "ChIJu7IPdAacskwRkub_KZJ7HWE"
             },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.2792565,
-                    43.6512651
-                ]
-            }
-        },
-        {
             "properties": {
-                "rating": "3.4",
-                "vicinity": "42 Wharf Street, Portland",
+                "rating": "4.8",
+                "name": "Emilitsa",
                 "open_now": "False",
-                "name": "Oasis",
-                "place_id": "ChIJI70zyT-cskwRptp-w_76Hzc"
-            },
+                "place_id": "ChIJS0qfDhScskwRJp5Tm_B-a8M",
+                "vicinity": "547 Congress Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -753,16 +695,16 @@
                     -70.254188,
                     43.65556399999999
                 ]
+            },
+            "properties": {
+                "rating": "3.4",
+                "name": "Oasis",
+                "open_now": "False",
+                "place_id": "ChIJI70zyT-cskwRptp-w_76Hzc",
+                "vicinity": "42 Wharf Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.7",
-                "vicinity": "442 Fore Street, Portland",
-                "open_now": "none",
-                "name": "Pearl Lounge",
-                "place_id": "ChIJ0fuM0z-cskwRkfHlTi6xhsQ"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -770,16 +712,33 @@
                     -70.254679,
                     43.65563729999999
                 ]
+            },
+            "properties": {
+                "rating": "3.7",
+                "name": "Pearl Lounge",
+                "open_now": "none",
+                "place_id": "ChIJ0fuM0z-cskwRkfHlTi6xhsQ",
+                "vicinity": "442 Fore Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.8",
-                "vicinity": "436 Fore Street, Portland",
-                "open_now": "False",
-                "name": "Fore Play Sports Pub",
-                "place_id": "ChIJ-xR30T-cskwRfTqabMcQCiA"
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2599352,
+                    43.6559137
+                ]
             },
+            "properties": {
+                "rating": "4.1",
+                "name": "Binga's Stadium",
+                "open_now": "False",
+                "place_id": "ChIJ4YhLRBScskwRaA_JR-Yv_NI",
+                "vicinity": "77 Free Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -787,16 +746,16 @@
                     -70.2545517,
                     43.65565299999999
                 ]
+            },
+            "properties": {
+                "rating": "3.8",
+                "name": "Fore Play Sports Pub",
+                "open_now": "False",
+                "place_id": "ChIJ-xR30T-cskwRfTqabMcQCiA",
+                "vicinity": "436 Fore Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.3",
-                "vicinity": "Two Portland Square, Portland",
-                "open_now": "True",
-                "name": "Walter's",
-                "place_id": "ChIJCU6LRROcskwRQM6V2JGVefY"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -804,16 +763,16 @@
                     -70.2556002,
                     43.65580529999999
                 ]
+            },
+            "properties": {
+                "rating": "4.3",
+                "name": "Walter's",
+                "open_now": "True",
+                "place_id": "ChIJCU6LRROcskwRQM6V2JGVefY",
+                "vicinity": "Two Portland Square, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "none",
-                "vicinity": "38 Wharf Street, Portland",
-                "open_now": "none",
-                "name": "The Wine Bar And Restaurant",
-                "place_id": "ChIJ2UgmyT-cskwRTOPh593emtA"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -821,33 +780,33 @@
                     -70.25413089999999,
                     43.65565269999999
                 ]
+            },
+            "properties": {
+                "rating": "none",
+                "name": "The Wine Bar And Restaurant",
+                "open_now": "none",
+                "place_id": "ChIJ2UgmyT-cskwRTOPh593emtA",
+                "vicinity": "38 Wharf Street, Portland"
             }
         },
         {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.25413089999999,
+                    43.65565269999999
+                ]
+            },
             "properties": {
                 "rating": "4.2",
-                "vicinity": "38 Wharf Street, Portland",
-                "open_now": "False",
                 "name": "Bar of Chocolate",
-                "place_id": "ChIJ2UgmyT-cskwRHrZK3boBWc0"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.25413089999999,
-                    43.65565269999999
-                ]
+                "open_now": "False",
+                "place_id": "ChIJ2UgmyT-cskwRHrZK3boBWc0",
+                "vicinity": "38 Wharf Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "none",
-                "vicinity": "43 Wharf Street, Portland",
-                "open_now": "False",
-                "name": "The Drink Exchange",
-                "place_id": "ChIJ5e-SzT-cskwRgqyh7MDQTZw"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -855,16 +814,16 @@
                     -70.2544068,
                     43.65572
                 ]
+            },
+            "properties": {
+                "rating": "none",
+                "name": "The Drink Exchange",
+                "open_now": "False",
+                "place_id": "ChIJ5e-SzT-cskwRgqyh7MDQTZw",
+                "vicinity": "43 Wharf Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.4",
-                "vicinity": "37 Wharf Street, Portland",
-                "open_now": "False",
-                "name": "Bonfire Country Bar",
-                "place_id": "ChIJL0Wfzj-cskwRSkPkOQDdDj8"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -872,33 +831,16 @@
                     -70.2542598,
                     43.6558296
                 ]
+            },
+            "properties": {
+                "rating": "4.4",
+                "name": "Bonfire Country Bar",
+                "open_now": "False",
+                "place_id": "ChIJL0Wfzj-cskwRSkPkOQDdDj8",
+                "vicinity": "37 Wharf Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.9",
-                "vicinity": "443 Fore Street, Portland",
-                "open_now": "False",
-                "name": "Evo Kitchen & Bar",
-                "place_id": "ChIJQ_CH1D-cskwRN7f0b71zUiI"
-            },
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -70.2547573,
-                    43.6559921
-                ]
-            }
-        },
-        {
-            "properties": {
-                "rating": "3.8",
-                "vicinity": "10 Dana Street, Portland",
-                "open_now": "False",
-                "name": "Vignola",
-                "place_id": "ChIJ_63VxT-cskwRp3mmYBPLuro"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -906,16 +848,50 @@
                     -70.2537109,
                     43.6558509
                 ]
+            },
+            "properties": {
+                "rating": "3.8",
+                "name": "Vignola",
+                "open_now": "False",
+                "place_id": "ChIJ_63VxT-cskwRp3mmYBPLuro",
+                "vicinity": "10 Dana Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.8",
-                "vicinity": "29 Wharf Street, Portland",
-                "open_now": "False",
-                "name": "Portland Mash TUN",
-                "place_id": "ChIJ-_xEzz-cskwROmvXDQlBKmc"
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.272239,
+                    43.654144
+                ]
             },
+            "properties": {
+                "rating": "none",
+                "name": "Rossobianco",
+                "open_now": "False",
+                "place_id": "ChIJM_qKTA6cskwRWLxjQjlb3VE",
+                "vicinity": "3 Deering Avenue, Portland"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2547573,
+                    43.6559921
+                ]
+            },
+            "properties": {
+                "rating": "4.9",
+                "name": "Evo Kitchen & Bar",
+                "open_now": "False",
+                "place_id": "ChIJQ_CH1D-cskwRN7f0b71zUiI",
+                "vicinity": "443 Fore Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -923,16 +899,16 @@
                     -70.2539362,
                     43.65596539999999
                 ]
+            },
+            "properties": {
+                "rating": "4.8",
+                "name": "Portland Mash TUN",
+                "open_now": "False",
+                "place_id": "ChIJ-_xEzz-cskwROmvXDQlBKmc",
+                "vicinity": "29 Wharf Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.9",
-                "vicinity": "420 Fore Street, Portland",
-                "open_now": "True",
-                "name": "Joe's New York Pizza",
-                "place_id": "ChIJMzBCxT-cskwRCK8NnhaWg3A"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -940,16 +916,16 @@
                     -70.25393660000002,
                     43.6560003
                 ]
+            },
+            "properties": {
+                "rating": "3.9",
+                "name": "Joe's New York Pizza",
+                "open_now": "True",
+                "place_id": "ChIJMzBCxT-cskwRCK8NnhaWg3A",
+                "vicinity": "420 Fore Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.5",
-                "vicinity": "9 Dana Street, Portland",
-                "open_now": "False",
-                "name": "Amigos Mexican Restaurant & Bar",
-                "place_id": "ChIJi1SAxj-cskwRPPl667dOCjs"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -957,16 +933,33 @@
                     -70.25333499999999,
                     43.655984
                 ]
+            },
+            "properties": {
+                "rating": "3.5",
+                "name": "Amigos Mexican Restaurant & Bar",
+                "open_now": "False",
+                "place_id": "ChIJi1SAxj-cskwRPPl667dOCjs",
+                "vicinity": "9 Dana Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.8",
-                "vicinity": "396 Fore Street, Portland",
-                "open_now": "True",
-                "name": "Gritty McDuff's Portland Brew Pub",
-                "place_id": "ChIJu-MMEwecskwRjNbWKs209O4"
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -70.2792565,
+                    43.6512651
+                ]
             },
+            "properties": {
+                "rating": "3.4",
+                "name": "Margaritas",
+                "open_now": "True",
+                "place_id": "ChIJu7IPdAacskwRkub_KZJ7HWE",
+                "vicinity": "242 Saint John Street, Portland"
+            }
+        },
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -974,16 +967,16 @@
                     -70.25341,
                     43.656247
                 ]
+            },
+            "properties": {
+                "rating": "3.8",
+                "name": "Gritty McDuff's Portland Brew Pub",
+                "open_now": "True",
+                "place_id": "ChIJu-MMEwecskwRjNbWKs209O4",
+                "vicinity": "396 Fore Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.1",
-                "vicinity": "396 Fore Street, Portland",
-                "open_now": "True",
-                "name": "Gritty's",
-                "place_id": "ChIJy07LwD-cskwR8rQkAx95umM"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -991,16 +984,16 @@
                     -70.2533653,
                     43.6562448
                 ]
+            },
+            "properties": {
+                "rating": "4.1",
+                "name": "Gritty's",
+                "open_now": "True",
+                "place_id": "ChIJy07LwD-cskwR8rQkAx95umM",
+                "vicinity": "396 Fore Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "4.1",
-                "vicinity": "4 Free Street, Portland",
-                "open_now": "False",
-                "name": "Rhum Food + Grog",
-                "place_id": "ChIJm8RhGRWcskwRyBvXl0PEmRk"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -1008,16 +1001,16 @@
                     -70.2571882,
                     43.6567751
                 ]
+            },
+            "properties": {
+                "rating": "4.1",
+                "name": "Rhum Food + Grog",
+                "open_now": "False",
+                "place_id": "ChIJm8RhGRWcskwRyBvXl0PEmRk",
+                "vicinity": "4 Free Street, Portland"
             }
         },
         {
-            "properties": {
-                "rating": "3.6",
-                "vicinity": "11 Moulton Street, Portland",
-                "open_now": "False",
-                "name": "Old Port Tavern",
-                "place_id": "ChIJdxE4vj-cskwRgb8VkUaxepQ"
-            },
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -1025,6 +1018,13 @@
                     -70.2528537,
                     43.6564072
                 ]
+            },
+            "properties": {
+                "rating": "3.6",
+                "name": "Old Port Tavern",
+                "open_now": "False",
+                "place_id": "ChIJdxE4vj-cskwRgb8VkUaxepQ",
+                "vicinity": "11 Moulton Street, Portland"
             }
         }
     ]

@@ -19,6 +19,8 @@ __author__='joelwhitney'
   Requires Python 3+
 
   This script...
+nohup python bgservice.py &
+tail -f nohup.out
 
 """
 from libraries.GooglePlaces.GooglePlacesAPI import GooglePlaces, AGOL_JSON
@@ -38,51 +40,59 @@ def agolHelper_playground():
         args = parser.parse_args()
 
         """get last iPhone location for Google Places search"""
+        print('***' * 10 + 'GETTING IPHONE LOCATION' + '***' * 10)
         icloud_handler = PyiCloudService('whitney.joel.b@gmail.com', 'Whitneyjb5')
         iphone6S = icloud_handler.devices['SOgZzA09evu1n78fvaGBelmik77fmEl2vFGf+aUHaNmvP0GNtbAPT+HYVNSUzmWV']
         iphone6S_location = '{}, {}'.format(iphone6S.location()['latitude'], iphone6S.location()['longitude'])
-        print(iphone6S_location)
+        print("Location: {}, {}\nTimestamp: {}".format(iphone6S.location()['latitude'], iphone6S.location()['longitude'], iphone6S.location()['timeStamp']))
+
+
+        # Get handler for source Portal for ArcGIS.
+        agol_handler = AGOLHandler(args)
+
+        # add my location features
+        print('***' * 10 + 'ADDING MY LOCATION TO FEATURE SERVICE' + '***' * 10)
+        feature_params = [{'geometry': {'latitude': iphone6S.location()['latitude'],
+                                        'longitude': iphone6S.location()['longitude']},
+                           'properties': {'timeStamp': str(iphone6S.location()['timeStamp']),
+                                          'horizontalAccuracy': iphone6S.location()['horizontalAccuracy']}}]
+        my_location_handler = AGOL_JSON(features=feature_params)
+        feature_service_search2 = agol_handler.search(query='id:12ce9d04418a43a08044d9a6d527a8ff',
+                                                      token=agol_handler.token)
+        feature_service2 = feature_service_search2.results[0]
+        delete_features_response2 = agol_handler.delete_features(service_url=feature_service2.url, where='ObjectId>0')
+        print(delete_features_response2)
+        add_features_response2 = agol_handler.add_features(service_url=feature_service2.url,
+                                                           agol_json=my_location_handler.raw_arcrest_json)
+        print(add_features_response2)
 
         """search Google Places API and add to feature service"""
+        print('***' * 10 + 'ADDING GOOGLE PLACES TO FEATURE SERVICE' + '***' * 10)
         api_key = 'AIzaSyDtbpYc0KAQ4-ZMLd6AnTcGfPo2xht8ilQ'
         google_places_handler = GooglePlaces(api_key)
         google_places = google_places_handler.nearby_search(location=iphone6S_location, rankby='distance', types=[types.TYPE_BAR])
         places_agol_json = google_places.agol_json
-        places_agol_json.write_jsonfile(google_places.agol_json.raw_agol_json, filename='Beer_Near_Me')
+        #places_agol_json.write_jsonfile(google_places.agol_json.raw_agol_json, filename='Beer_Near_Me')
         print(google_places.raw_response)
 
         """delete all features before adding new features to feature service"""
-        # Get handler for source Portal for ArcGIS.
-        agol_handler = AGOLHandler(args)
-        feature_service_search1 = agol_handler.search(query='title:Beer_Near_Me type:Feature Service', token=agol_handler.token)
+        feature_service_search1 = agol_handler.search(query='id:a697917677464992a8be2a93e3014db9', token=agol_handler.token)
         feature_service1 = feature_service_search1.results[0]
-
-        # delete features
+        # delete existing features
         delete_features_response = agol_handler.delete_features(service_url=feature_service1.url, where='ObjectId>0')
         print(delete_features_response)
-
-        # add Google Place features
+        # add new Google Place features
         add_features_response1 = agol_handler.add_features(service_url=feature_service1.url, agol_json=google_places.agol_json.raw_arcrest_json)
         print(add_features_response1)
 
-        # add my location features
-        feature_params = [{'geometry': {'latitude': iphone6S.location()['latitude'], 'longitude': iphone6S.location()['longitude']},
-                           'properties': {'timeStamp': iphone6S.location()['timeStamp'], 'locationType': iphone6S.location()['locationType'],
-                           'horizontalAccuracy': iphone6S.location()['horizontalAccuracy']}}]
-        my_location_handler = AGOL_JSON(features=feature_params)
-        my_location_handler.write_jsonfile(my_location_handler.raw_agol_json, filename='My_Location')
-        feature_service_search2 = agol_handler.search(query='title:My_Location type:Feature Service', token=agol_handler.token)
-        feature_service2 = feature_service_search2.results[0]
-        add_features_response2 = agol_handler.add_features(service_url=feature_service2.url, agol_json=my_location_handler.raw_arcrest_json)
-        print(add_features_response2)
-        time.sleep(1800)
+        # sleep 20 min before repeating
+        time.sleep(1200)
 
-agolHelper_playground()
-
-
-
-
-
+if __name__ == '__main__':
+    try:
+        agolHelper_playground()
+    except Exception as e:
+        print("Error: " + str(e))
 
 
 # def nearbySearchExample_forAGOL():
