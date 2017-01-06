@@ -17,15 +17,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 __author__='joelwhitney'
 """
   Requires Python 3+
-
+    - requires the custom libraries below (
   This script...
-nohup python bgservice.py &
-tail -f nohup.out
+    nohup python bgservice.py &
+    tail -f nohup.out
 
 """
-from libraries.GooglePlaces.GooglePlacesAPI import GooglePlaces, AGOL_JSON
-from libraries.GooglePlaces import types, lang
-from libraries.ArcRESTAPI.ArcRESTAPI import AGOLHandler
+from ...python.lib.GooglePlaces.GooglePlacesAPI import GooglePlaces, AGOL_JSON
+from ...python.lib.GooglePlaces import types, lang
+from ...python.lib.ArcRESTAPI.ArcRESTAPI import AGOLHandler
 import argparse
 import time
 from pyicloud import PyiCloudService
