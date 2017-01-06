@@ -104,6 +104,52 @@ class AGOLHandler(object):
         json_response = json.loads(urllib.request.urlopen(request, parameters).read().decode("utf-8"))
         return json_response
 
+    def create_feature_service(self, servicename, spatial_ref_wkid=4326):
+        '''Returns the description for a Portal for ArcGIS item.
+        http://resources.arcgis.com/en/help/arcgis-rest-api/#/Add_Features/02r30000010m000000/'''
+        user_content_url = 'https://www.arcgis.com/sharing/rest/content/users/joel_Nitro'
+        parameters = urllib.parse.urlencode({'createParameters': {'name': servicename,
+                                                                  'capabilities': 'Query,Editing,Create,Update,Delete,Sync',
+                                                                  'allowGeometryUpdates': 'true',
+                                                                  'units': 'esriMeters',
+                                                                  'editorTrackingInfo': {
+                                                                      'enableEditorTracking': 'true',
+                                                                      'enableOwnershipAccessControl': 'false',
+                                                                      'allowOthersToUpdate': 'true',
+                                                                      'allowOthersToDelete': 'true'
+                                                                  },
+                                                                  'syncEnabled': 'true',
+                                                                  'syncCapabilities': {
+                                                                      'supportsAsync': 'true',
+                                                                      'supportsRegisteringExistingData': 'true',
+                                                                      'supportsSyncDirectionControl': 'true',
+                                                                      'supportsPerLayerSync': 'true',
+                                                                      'supportsPerReplicaSync': 'true',
+                                                                      'supportsSyncModelNone': 'true',
+                                                                      'supportsRollbackOnFailure': 'true'
+                                                                  },
+                                                                  'spatialReference': {'wkid': spatial_ref_wkid}
+                                                                  },
+                                             'outputType': 'featureService',
+                                             'f': 'json',
+                                             'token': self.token}).encode("utf-8")
+        create_service_request = user_content_url + '/CreateService?'
+        print(create_service_request)
+        try:
+            json_response = json.loads(
+                urllib.request.urlopen(create_service_request, parameters).read().decode("utf-8"))
+            print(json_response)
+            if json_response['success']:
+                return json_response
+            elif 'error' in json_response:
+                print(json_response['error']['code'])
+                print(json_response['error']['message'])
+                for detail in json_response['error']['details']:
+                    print(detail)
+        except ValueError as e:
+            print('An unspecified error occurred.')
+            print(e)
+
     def delete_features(self, service_url, layer_id=0, where='ObjectId>0'):
         '''Returns the description for a Portal for ArcGIS item.
         http://resources.arcgis.com/en/help/arcgis-rest-api/#/Delete_Features/02r3000000w4000000/'''
